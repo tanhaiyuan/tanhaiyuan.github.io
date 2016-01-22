@@ -4,7 +4,7 @@
   <subtitle><![CDATA[每天进步！！！]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2016-01-22T10:42:19.478Z</updated>
+  <updated>2016-01-22T10:43:38.507Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://yoursite.com/2016/01/22/Jms%E5%AD%A6%E4%B9%A0/"/>
     <id>http://yoursite.com/2016/01/22/Jms学习/</id>
     <published>2016-01-22T10:28:02.000Z</published>
-    <updated>2016-01-22T10:42:19.478Z</updated>
+    <updated>2016-01-22T10:43:38.507Z</updated>
     <content type="html"><![CDATA[<p><a href="http://blog.csdn.net/moonsheep_liu/article/details/6683190" target="_blank" rel="external"> JMS与Spring之一（用JmsTemplate同步收发消息）</a><br><a href="http://blog.csdn.net/moonsheep_liu/article/details/6684948" target="_blank" rel="external"> JMS与Spring之二（用message listener container异步收发消息）</a></p>
 <p><a href="http://mikecoder.net/?post=85" target="_blank" rel="external">JMS阶段性总结</a><br><a href="http://m635674608.iteye.com/blog/2152950" target="_blank" rel="external">深入掌握jms</a><br><a href="http://m635674608.iteye.com/blog/2152567" target="_blank" rel="external">优化ActiveMQ性能（zhuan）</a><br><a href="http://blog.csdn.net/jiuqiyuliang/article/category/5617711" target="_blank" rel="external"> 深入浅出JMS系列</a><br><a href="http://setting.iteye.com/blog/1097767/" target="_blank" rel="external">JMS介绍：我对JMS的理解和认识</a></p>
 <p><a href="http://shift-alt-ctrl.iteye.com/blog/2035321" target="_blank" rel="external">ActiveMQ中Consumer特性详解与优化</a><br><a href="http://blog.csdn.net/czp11210/article/details/8837901" target="_blank" rel="external"> ActiveMQ 的独占消费（Exclusive Consumer）</a></p>
