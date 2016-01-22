@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title><![CDATA[Hexo]]></title>
-  
+  <title><![CDATA[Tan]]></title>
+  <subtitle><![CDATA[每天进步！！！]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2016-01-22T06:49:57.171Z</updated>
+  <updated>2016-01-22T10:29:39.043Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,10 +15,41 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[Jms学习]]></title>
+    <link href="http://yoursite.com/2016/01/22/Jms%E5%AD%A6%E4%B9%A0/"/>
+    <id>http://yoursite.com/2016/01/22/Jms学习/</id>
+    <published>2016-01-22T10:28:02.000Z</published>
+    <updated>2016-01-22T10:29:39.043Z</updated>
+    <content type="html"><![CDATA[<p><a href="http://blog.csdn.net/moonsheep_liu/article/details/6683190" target="_blank" rel="external"> JMS与Spring之一（用JmsTemplate同步收发消息）</a><br><a href="http://blog.csdn.net/moonsheep_liu/article/details/6684948" target="_blank" rel="external"> JMS与Spring之二（用message listener container异步收发消息）</a></p>
+<p><a href="http://mikecoder.net/?post=85" target="_blank" rel="external">JMS阶段性总结</a><br><a href="http://m635674608.iteye.com/blog/2152950" target="_blank" rel="external">深入掌握jms</a><br><a href="http://m635674608.iteye.com/blog/2152567" target="_blank" rel="external">优化ActiveMQ性能（zhuan）</a><br><a href="http://blog.csdn.net/jiuqiyuliang/article/category/5617711" target="_blank" rel="external"> 深入浅出JMS系列</a><br><a href="http://setting.iteye.com/blog/1097767/" target="_blank" rel="external">JMS介绍：我对JMS的理解和认识</a></p>
+<p><a href="http://shift-alt-ctrl.iteye.com/blog/2035321" target="_blank" rel="external">ActiveMQ中Consumer特性详解与优化</a><br><a href="http://blog.csdn.net/czp11210/article/details/8837901" target="_blank" rel="external"> ActiveMQ 的独占消费（Exclusive Consumer）</a></p>
+<p><a href="http://blog.chinaunix.net/uid-16979052-id-4031235.html" target="_blank" rel="external">activeMQ重发策略,死信队列</a><br><a href="http://www.iteye.com/blogs/subjects/springjms" target="_blank" rel="external">Spring整合JMS</a><br><a href="http://www.jack-yin.com/category/coding/translation/activemq-in-action/page/7" target="_blank" rel="external">ActiveMQ in action 中英</a><br><a href="http://www.xuetimes.com/archives/511" target="_blank" rel="external">JMS和ActiveMQ学习总结</a></p>
+<p><a href="http://ihenu.iteye.com/blog/2270078" target="_blank" rel="external">JMS之Spring +activeMQ实现消息队列</a><br><a href="http://jackyin5918.iteye.com/blog/2007422?utm_source=tuicool&amp;utm_medium=referral" target="_blank" rel="external">ActiveMQ 使用Ajax 收发消息实战</a><br><a href="http://blog.csdn.net/linlzk/article/details/13290699" target="_blank" rel="external">Spring+ActiveMQ实现消息收发和订阅</a><br><a href="http://blog.csdn.net/zhaozhenzuo/article/details/7934881" target="_blank" rel="external">深入理解DefaultMessageListenerContainer</a></p>
+<hr>
+<p>###相关概念<br>支持两种消息通信模型：点到点（point-to-point）（P2P）模型和发布/订阅（Pub/Sub）模型。P2P 模型规定了一个消息只能有一个接收者;Pub/Sub 模型允许一个消息可以有多个接收者。<br>简单的讲，点到点模型和发布/订阅模型的区别就是前者是一对一，后者是一对多。</p>
+<p>ConnectionFactory<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ActiveMQConnectionFactory connectionFactory = <span class="keyword">new</span> ActiveMQConnectionFactory(<span class="string">"admin"</span>, <span class="string">"password"</span>, url);</span><br></pre></td></tr></table></figure></p>
+<p>Connection: 与JMS提供者建立一个连接。可以从这个链接创建一个会话session 即Session<br><figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">connection = connectionFactory.createConnection()<span class="comment">;</span></span><br><span class="line">connection.start()<span class="comment">;</span></span><br><span class="line"><span class="escape">``</span><span class="escape">` </span></span><br><span class="line">Session： 与JMS提供者所建立的会话，通过Session我们才可以创建一个Message。</span><br></pre></td></tr></table></figure></p>
+<p> Session session = connection.createSession(NON_TRANSACTED, Session.AUTO_ACKNOWLEDGE);<br><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="label">Destination:</span>消息发送的目的地，也就是前面说的Queue和Topic。创建好一个消息之后，只需要把这个消息发送到目的地，消息的发送者就可以继续做自己的事情，而不用等待消息被处理完成。至于这个消息什么时候，会被哪个消费者消费，完全取决于消息的接受者。</span><br></pre></td></tr></table></figure></p>
+<p>Destination destination = session.createQueue(“FirstQueue”);<br>Destination destination = session.createTopic(“test-topic”);<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MessageProducer： 消息的生产者，要发送一个消息，必须通过这个生产者来发送。</span><br></pre></td></tr></table></figure></p>
+<p> MessageProducer producer = session.createProducer(destination);<br>```<br>MessageConsumer： 与生产者相对应，这是消息的消费者或接收者，通过它来接收一个消息。<br>Message ：从字面上就可以看出是被发送的消息。它有下面几种类型：<br>        StreamMessage：Java 数据流消息，用标准流操作来顺序的填充和读取。<br>        MapMessage：一个Map类型的消息；名称为 string 类型，而值为 Java 的基本类型。<br>        TextMessage：普通字符串消息，包含一个String。<br>        ObjectMessage：对象消息，包含一个可序列化的Java 对象<br>        BytesMessage：二进制数组消息，包含一个byte[]。<br>        XMLMessage:  一个XML类型的消息。<br>    最常用的是TextMessage和ObjectMessage。</p>
+<p>QueueBrowser</p>
+<p> 通过下面这个简图可以看出上面这些概念的关系。<br>  ConnectionFactory—-&gt;Connection—&gt;Session—&gt;Message<br>  Destination + Session————————————&gt;Producer<br>  Destination + Session————————————&gt;MessageConsumer </p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p><a href="http://blog.csdn.net/moonsheep_liu/article/details/6683190" target="_blank" rel="external"> JMS与Spring之一（用JmsTemplate同步收发消息）</a>]]>
+    </summary>
+    
+      <category term="java" scheme="http://yoursite.com/tags/java/"/>
+    
+      <category term="学习" scheme="http://yoursite.com/categories/%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[Hello World]]></title>
     <link href="http://yoursite.com/2016/01/22/hello-world/"/>
     <id>http://yoursite.com/2016/01/22/hello-world/</id>
-    <published>2016-01-22T06:49:57.171Z</published>
+    <published>2016-01-22T10:10:33.250Z</published>
     <updated>2016-01-22T06:49:57.171Z</updated>
     <content type="html"><![CDATA[<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
 <h2 id="Quick_Start"><a href="#Quick_Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create_a_new_post"><a href="#Create_a_new_post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
